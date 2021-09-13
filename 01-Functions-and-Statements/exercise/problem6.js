@@ -1,14 +1,16 @@
-function solve(num, param1, param2, param3, param4, param5) {
-    listOfParams = [param1, param2, param3, param4, param5];
-    commands = {
-        'chop': function (num) { return num / 2 },
-        'dice': function (num) { return Math.sqrt(num) },
-        'spice': function (num) { return num + 1 },
-        'bake': function (num) { return num * 3 },
-        'fillet': function (num) { return num - num * 0.2 },
-    }
-    for (param of listOfParams) {
-        num = commands[param](num);
-        console.log(num);
+function solve(speed, area) {
+    info = { 'motorway': 130, 'interstate': 90, 'residential': 20, 'city': 50 }
+    allowedSpeed = info[area]
+    if (speed <= allowedSpeed) {
+        console.log(`Driving ${speed} km/h in a ${allowedSpeed} zone`)
+    } else if (0 < speed - allowedSpeed && speed - allowedSpeed <= 20) {
+        difference = speed - allowedSpeed;
+        console.log(`The speed is ${difference} km/h faster than the allowed speed of ${allowedSpeed} km/h- speeding`)
+    } else if (20 < speed - allowedSpeed && speed - allowedSpeed <= 40) {
+        difference = speed - allowedSpeed;
+        console.log(`The speed is ${difference} km/h faster than the allowed speed of ${allowedSpeed} km/h- excessive speeding`)
+    } else {
+        difference = speed - allowedSpeed;
+        console.log(`The speed is ${difference} km/h faster than the allowed speed of ${allowedSpeed} km/h- reckless driving`)
     }
 }

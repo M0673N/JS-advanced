@@ -1,20 +1,14 @@
-function solve(x1, y1, x2, y2) {
-    distanceBetweenPoints = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-    distanceBetweenFirstAndMiddle = Math.sqrt(Math.pow(x1, 2) + Math.pow(y1, 2));
-    distanceBetweenSecondAndMiddle = Math.sqrt(Math.pow(x2, 2) + Math.pow(y2, 2));
-    if (Number.isInteger(distanceBetweenFirstAndMiddle)) {
-        console.log(`{${x1}, ${y1}} to {0, 0} is valid`)
-    } else {
-        console.log(`{${x1}, ${y1}} to {0, 0} is invalid`)
+function solve(num, param1, param2, param3, param4, param5) {
+    listOfParams = [param1, param2, param3, param4, param5];
+    commands = {
+        'chop': function (num) { return num / 2 },
+        'dice': function (num) { return Math.sqrt(num) },
+        'spice': function (num) { return num + 1 },
+        'bake': function (num) { return num * 3 },
+        'fillet': function (num) { return num - num * 0.2 },
     }
-    if (Number.isInteger(distanceBetweenSecondAndMiddle)) {
-        console.log(`{${x2}, ${y2}} to {0, 0} is valid`)
-    } else {
-        console.log(`{${x2}, ${y2}} to {0, 0} is invalid`)
-    }
-    if (Number.isInteger(distanceBetweenPoints)) {
-        console.log(`{${x1}, ${y1}} to {${x2}, ${y2}} is valid`)
-    } else {
-        console.log(`{${x1}, ${y1}} to {${x2}, ${y2}} is invalid`)
+    for (param of listOfParams) {
+        num = commands[param](num);
+        console.log(num);
     }
 }
